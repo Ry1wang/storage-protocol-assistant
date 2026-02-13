@@ -1,0 +1,50 @@
+# Web Framework
+streamlit>=1.31.0,<2.0.0
+streamlit-pdf-viewer>=0.0.13
+
+# LLM & Embeddings
+openai>=1.12.0,<2.0.0  # For DeepSeek API (OpenAI-compatible)
+sentence-transformers>=2.3.0,<3.0.0
+scipy>=1.10.0
+scikit-learn>=1.4.0
+setuptools
+numba>=0.57.0
+llvmlite>=0.40.0
+tiktoken>=0.6.0
+
+# Vector Database
+qdrant-client>=1.7.0,<2.0.0
+
+# PDF Processing
+unstructured[pdf]>=0.12.0
+pdf2image>=1.17.0
+pillow>=10.0.0
+pdfplumber>=0.10.0
+
+# Text Processing (optional - simplified for MVP)
+# langchain>=0.1.0,<0.2.0
+# langchain-community>=0.0.19
+
+# Data & Database
+pandas>=2.0.0
+numpy==1.26.4
+sqlalchemy>=2.0.0,<3.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.6.0,<3.0.0
+pydantic-settings>=2.1.0,<3.0.0
+
+# Logging & Monitoring
+structlog>=24.0.0
+loguru>=0.7.0
+
+# Testing (Development only - install separately)
+# pytest>=8.0.0
+# pytest-cov>=4.0.0
+# pytest-asyncio>=0.23.5
+
+# Development (Development only - install separately)
+# black>=24.0.0
+# flake8>=7.0.0
+# mypy>=1.8.0

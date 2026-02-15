@@ -123,7 +123,7 @@ class QdrantVectorStore:
         query: str,
         top_k: int = 10,
         filters: Optional[Dict[str, Any]] = None,
-        min_score: float = 0.7,
+        min_score: Optional[float] = None,
     ) -> List[Dict[str, Any]]:
         """
         Search for similar chunks.
@@ -139,13 +139,23 @@ class QdrantVectorStore:
         """
         query_vector = self.embed_text(query)
 
-        search_result = self.client.search(
+        logger.debug(f"Searching with vector of length {len(query_vector)}")
+
+        query_response = self.client.query_points(
             collection_name=self.collection_name,
-            query_vector=query_vector,
+            query=query_vector,
             limit=top_k,
-            score_threshold=min_score,
             with_payload=True,
         )
+
+        logger.debug(f"Query response type: {type(query_response)}")
+        search_result = query_response.points
+        logger.debug(f"Points in response: {len(search_result)}")
+
+        # Apply score threshold filter if specified
+        if min_score is not None:
+            search_result = [hit for hit in search_result if hit.score >= min_score]
+            logger.debug(f"After score threshold: {len(search_result)}")
 
         results = []
         for hit in search_result:

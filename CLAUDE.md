@@ -126,16 +126,17 @@ pytest tests/ --cov=src --cov-report=html
 
 ## Next Steps (Priority Order)
 
-1. **Implement PDF Ingestion Pipeline** (`src/ingestion/`)
-   - PDF parser using Unstructured.io
-   - Semantic chunking with metadata preservation
-   - Embedding generation and storage
-   - CLI script for ingesting specs
+1. ✅ **~~Implement PDF Ingestion Pipeline~~** (`src/ingestion/`) - **COMPLETE**
+   - ✅ PDF parser using Unstructured.io
+   - ✅ Semantic chunking with metadata preservation
+   - ✅ Embedding generation and storage
+   - ✅ CLI script for ingesting specs
 
-2. **Implement Retrieval Components** (`src/retrieval/`)
-   - Vector search wrapper for Qdrant
+2. **Implement Retrieval Components** (`src/retrieval/`) - **NEXT**
+   - Vector search wrapper for Qdrant (basic version exists, enhance with filters)
    - BM25 keyword search implementation
    - Hybrid search combining both approaches
+   - Reranking and score fusion
 
 3. **Implement Agent Pipeline** (`src/agents/`)
    - Query Router Agent (classify and route queries)
@@ -146,11 +147,13 @@ pytest tests/ --cov=src --cov-report=html
    - Connect agents to `app.py`
    - Display agent reasoning steps
    - Show citations with page numbers
+   - Add document upload interface
 
 5. **Testing & Validation**
    - Create test query dataset
    - Measure citation accuracy
    - Test with sample protocol specs
+   - End-to-end integration tests
 
 ## Common Tasks
 
@@ -171,10 +174,19 @@ docker-compose logs -f app
 ### Ingest a Document
 
 ```bash
-docker-compose exec app python src/ingestion/ingest_spec.py \
+# Using Makefile (recommended)
+make ingest FILE=/app/specs/emmc_5.1.pdf PROTOCOL=eMMC VERSION=5.1
+
+# Or using CLI directly
+docker-compose exec app python -m src.ingestion.ingest_spec ingest \
   --file /app/specs/emmc_5.1.pdf \
-  --protocol "eMMC" \
-  --version "5.1"
+  --protocol eMMC \
+  --version 5.1 \
+  --title "eMMC Specification v5.1" \
+  --strategy fast
+
+# List all documents
+make list
 ```
 
 ### Access Services
@@ -237,18 +249,23 @@ Key settings in `.env`:
 - Data models and schemas
 - Logging and configuration utilities
 - Basic Streamlit UI shell
+- **PDF ingestion pipeline** (pdf_parser.py, chunker.py, ingest_spec.py)
+- **Semantic chunking** with metadata preservation
+- **CLI interface** for document ingestion
+- **Makefile commands** for easy ingestion
+- **Unit tests** for ingestion components
+- **Documentation** and examples
 
 🚧 **In Progress**:
-- None (waiting for next phase)
+- None (ready for next phase)
 
 ❌ **Not Started**:
-- PDF ingestion pipeline
-- Retrieval components
-- Agent implementations
+- Retrieval components (vector + keyword search)
+- Agent implementations (Router, Retriever, Generator)
 - Full UI integration
-- Testing suite
+- Production testing suite
 
 ---
 
-**Last Updated**: 2026-02-12
-**Phase**: Initial Setup Complete
+**Last Updated**: 2026-02-14
+**Phase**: MVP - Ingestion Pipeline Complete ✅

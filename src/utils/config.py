@@ -31,8 +31,15 @@ class Settings(BaseSettings):
     # Retrieval Configuration
     top_k: int = Field(default=10, alias="TOP_K")
     min_similarity: float = Field(default=0.7, alias="MIN_SIMILARITY")
-    chunk_size: int = Field(default=500, alias="CHUNK_SIZE")
-    chunk_overlap: int = Field(default=50, alias="CHUNK_OVERLAP")
+    chunk_size: int = Field(default=350, alias="CHUNK_SIZE")
+    chunk_overlap: int = Field(default=30, alias="CHUNK_OVERLAP")
+
+    # Chunking Strategy Configuration
+    chunking_strategy: str = Field(default="section_aware", alias="CHUNKING_STRATEGY")  # Options: "simple", "semantic", "section_aware", "hybrid"
+    min_chunk_size: int = Field(default=100, alias="MIN_CHUNK_SIZE")
+    max_chunk_size: int = Field(default=800, alias="MAX_CHUNK_SIZE")
+    section_boundary_levels: int = Field(default=3, alias="SECTION_BOUNDARY_LEVELS")  # How many section levels to respect (e.g., 3 = 6.6.34)
+    allow_compound_titles: bool = Field(default=True, alias="ALLOW_COMPOUND_TITLES")
 
     # Application Configuration
     app_port: int = Field(default=8501, alias="APP_PORT")

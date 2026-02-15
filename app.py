@@ -201,29 +201,94 @@ def process_query(query: str) -> dict:
     Returns:
         Response with answer and citations
     """
-    # TODO: Implement full agentic pipeline
-    # For now, return a placeholder response
-
     query_id = str(uuid.uuid4())
 
-    # Placeholder response
-    response = {
-        "query_id": query_id,
-        "answer": """
-        This is a placeholder response. The full agentic pipeline is being implemented.
+    try:
+        # Get retrieval parameters from session state
+        top_k = st.session_state.get("top_k", 10)
 
-        The system will:
-        1. Route your query through the Query Router Agent
-        2. Perform hybrid retrieval (vector + keyword search)
-        3. Generate an answer with citations using DeepSeek
+        # Perform vector search
+        vector_store = st.session_state.qdrant_client
+        query_vector = vector_store.embed_text(query)
 
-        Please check back after the agents are implemented!
-        """,
-        "citations": [],
-        "confidence": 0.0,
-    }
+        # Search Qdrant
+        search_results = vector_store.client.query_points(
+            collection_name='protocol_specs',
+            query=query_vector,
+            limit=top_k,
+            with_payload=True
+        )
 
-    return response
+        if not search_results.points:
+            return {
+                "query_id": query_id,
+                "answer": "I couldn't find any relevant information in the protocol specifications. Please try rephrasing your question.",
+                "citations": [],
+                "confidence": 0.0,
+            }
+
+        # Format citations
+        citations = []
+        context_parts = []
+
+        for i, point in enumerate(search_results.points[:5], 1):  # Top 5 for context
+            payload = point.payload
+            score = point.score
+
+            section = payload.get('section_title', 'N/A')
+            pages = payload.get('page_numbers', [])
+            text = payload.get('text', '')
+            doc_id = payload.get('doc_id', 'N/A')
+
+            # Extract protocol and version from doc_id (e.g., "eMMC_5_1_...")
+            protocol = "eMMC"
+            version = "5.1"
+
+            citation = {
+                'source': f"{protocol} {version}",
+                'section': section,
+                'page': ', '.join(map(str, pages)) if pages else 'N/A',
+                'text': text[:300] + '...' if len(text) > 300 else text,
+                'confidence': score,
+            }
+            citations.append(citation)
+
+            # Add to context for answer
+            context_parts.append(f"[{i}] From {section} (pages {citation['page']}):\n{text[:500]}")
+
+        # Create context-aware answer
+        context = "\n\n".join(context_parts[:3])  # Top 3 chunks
+
+        # Simple answer format (without LLM for now)
+        answer = f"""Based on the {protocol} {version} specification:
+
+**Relevant Information:**
+
+{search_results.points[0].payload.get('text', '')[:800]}...
+
+*Please see the citations below for complete details and additional context.*
+
+**Top Match:** {search_results.points[0].payload.get('section_title', 'N/A')} (Confidence: {search_results.points[0].score:.2%})
+"""
+
+        response = {
+            "query_id": query_id,
+            "answer": answer,
+            "citations": citations,
+            "confidence": search_results.points[0].score if search_results.points else 0.0,
+        }
+
+        logger.info(f"Processed query: {query_id}, found {len(citations)} results")
+        return response
+
+    except Exception as e:
+        logger.error(f"Error in process_query: {e}")
+        return {
+            "query_id": query_id,
+            "answer": f"An error occurred while processing your query: {str(e)}",
+            "citations": [],
+            "confidence": 0.0,
+        }
 
 
 def main():

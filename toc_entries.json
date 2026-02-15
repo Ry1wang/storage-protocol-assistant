@@ -1,0 +1,2810 @@
+[
+  {
+    "section_number": "5.2",
+    "section_title": "Memory Addressing",
+    "page_number": 6,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "5.3.1",
+    "section_title": "Bus Protocol",
+    "page_number": 8,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "5.3.2",
+    "section_title": "Bus Speed Modes",
+    "page_number": 15,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "5.3.3",
+    "section_title": "HS200 Bus Speed Mode",
+    "page_number": 15,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "5.3.4",
+    "section_title": "HS200 System Block Diagram",
+    "page_number": 16,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "5.3.5",
+    "section_title": "HS200 Adjustable Sampling Host",
+    "page_number": 16,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "5.3.6",
+    "section_title": "HS400 Bus Speed Mode",
+    "page_number": 16,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "5.3.7",
+    "section_title": "HS400 System Block Diagram",
+    "page_number": 17,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.2",
+    "section_title": "Partition Management",
+    "page_number": 19,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.2.1",
+    "section_title": "General",
+    "page_number": 19,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.2.2",
+    "section_title": "Command restrictions",
+    "page_number": 21,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.2.3",
+    "section_title": "Extended Partitions Attribute",
+    "page_number": 21,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.2.4",
+    "section_title": "Configure partitions",
+    "page_number": 22,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.2.5",
+    "section_title": "Access partitions",
+    "page_number": 25,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.3",
+    "section_title": "Boot operation mode",
+    "page_number": 25,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.3.1",
+    "section_title": "Device reset to Pre-idle state",
+    "page_number": 25,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.3.2",
+    "section_title": "Boot partition",
+    "page_number": 27,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.3.3",
+    "section_title": "Boot operation",
+    "page_number": 28,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.3.4",
+    "section_title": "Alternative boot operation",
+    "page_number": 29,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.3.5",
+    "section_title": "Access to boot partition",
+    "page_number": 33,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.3.6",
+    "section_title": "Boot bus width and data access configuration",
+    "page_number": 33,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.3.7",
+    "section_title": "Boot Partition Write Protection",
+    "page_number": 34,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.4",
+    "section_title": "Device identification mode",
+    "page_number": 36,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.4.1",
+    "section_title": "Device reset",
+    "page_number": 36,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.4.2",
+    "section_title": "Access mode validation (higher than 2GB of densities)",
+    "page_number": 37,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.4.3",
+    "section_title": "From busy to ready",
+    "page_number": 37,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.4.4",
+    "section_title": "Device identification process",
+    "page_number": 38,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.5",
+    "section_title": "Interrupt mode",
+    "page_number": 38,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.6",
+    "section_title": "Data transfer mode",
+    "page_number": 40,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.6.1",
+    "section_title": "Command sets and extended settings",
+    "page_number": 42,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.2",
+    "section_title": "High-speed modes selection",
+    "page_number": 43,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.3",
+    "section_title": "Power class selection",
+    "page_number": 49,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.4",
+    "section_title": "Bus testing procedure",
+    "page_number": 50,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.5",
+    "section_title": "Bus Sampling Tuning Concept",
+    "page_number": 51,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.6",
+    "section_title": "Bus width selection",
+    "page_number": 54,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.7",
+    "section_title": "Data read",
+    "page_number": 54,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.8",
+    "section_title": "Data write",
+    "page_number": 56,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.11",
+    "section_title": "Sanitize",
+    "page_number": 62,
+    "toc_page": 5,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.12",
+    "section_title": "Discard",
+    "page_number": 62,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.13",
+    "section_title": "Secure Erase",
+    "page_number": 64,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.14",
+    "section_title": "Secure Trim",
+    "page_number": 65,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.15",
+    "section_title": "Write protect management",
+    "page_number": 66,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.16",
+    "section_title": "Extended Security Protocols Pass Through Commands",
+    "page_number": 68,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.17",
+    "section_title": "Production State Awareness",
+    "page_number": 69,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.18",
+    "section_title": "Field Firmware Update",
+    "page_number": 72,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.19",
+    "section_title": "Device lock/unlock operation",
+    "page_number": 73,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.20",
+    "section_title": "Application-specific commands",
+    "page_number": 76,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.21",
+    "section_title": "Sleep (CMD5)",
+    "page_number": 77,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.22",
+    "section_title": "Replay Protected Memory Block",
+    "page_number": 78,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.23",
+    "section_title": "Dual Data Rate mode selection",
+    "page_number": 92,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.24",
+    "section_title": "Dual Data Rate mode operation",
+    "page_number": 92,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.25",
+    "section_title": "Background Operations",
+    "page_number": 93,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.26",
+    "section_title": "High Priority Interrupt (HPI)",
+    "page_number": 94,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.27",
+    "section_title": "Context Management",
+    "page_number": 95,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.28",
+    "section_title": "Data Tag Mechanism",
+    "page_number": 99,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.29",
+    "section_title": "Packed Commands",
+    "page_number": 100,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.30",
+    "section_title": "Exception Events",
+    "page_number": 102,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.31",
+    "section_title": "Cache",
+    "page_number": 103,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.32",
+    "section_title": "Features cross matrix",
+    "page_number": 105,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.33",
+    "section_title": "Dynamic Capacity Management",
+    "page_number": 106,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.34",
+    "section_title": "Large sector size",
+    "page_number": 107,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.35",
+    "section_title": "Real Time Clock Information",
+    "page_number": 111,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.36",
+    "section_title": "Power Off Notification",
+    "page_number": 112,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.37",
+    "section_title": "Cache Enhancement Barrier",
+    "page_number": 113,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.38",
+    "section_title": "Cache Flushing Policy",
+    "page_number": 114,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.39",
+    "section_title": "Command Queuing",
+    "page_number": 115,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.6.40",
+    "section_title": "Secure Write Protect Mode",
+    "page_number": 120,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.7",
+    "section_title": "Clock control",
+    "page_number": 121,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.8",
+    "section_title": "Error conditions",
+    "page_number": 121,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.8.1",
+    "section_title": "CRC and illegal command",
+    "page_number": 121,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.8.2",
+    "section_title": "Time-out conditions",
+    "page_number": 122,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.8.3",
+    "section_title": "Read ahead in multiple block read operation",
+    "page_number": 123,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.9",
+    "section_title": "Minimum performance",
+    "page_number": 123,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.9.1",
+    "section_title": "Speed class definition",
+    "page_number": 123,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.9.2",
+    "section_title": "Measurement of the performance",
+    "page_number": 124,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.10",
+    "section_title": "Commands",
+    "page_number": 124,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.10.1",
+    "section_title": "Command types",
+    "page_number": 124,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.10.2",
+    "section_title": "Command format",
+    "page_number": 124,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.10.3",
+    "section_title": "Command classes",
+    "page_number": 125,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.10.4",
+    "section_title": "Detailed command description",
+    "page_number": 126,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.11",
+    "section_title": "Device state transition table",
+    "page_number": 134,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.12",
+    "section_title": "Responses",
+    "page_number": 136,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.13",
+    "section_title": "Device status",
+    "page_number": 138,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.14",
+    "section_title": "Memory array partitioning",
+    "page_number": 142,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.15",
+    "section_title": "Timings",
+    "page_number": 144,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "6.15.1",
+    "section_title": "Command and response",
+    "page_number": 144,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.2",
+    "section_title": "Data read",
+    "page_number": 146,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.3",
+    "section_title": "Data write",
+    "page_number": 147,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.4",
+    "section_title": "Bus test procedure timing",
+    "page_number": 151,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.5",
+    "section_title": "Boot operation",
+    "page_number": 152,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.6",
+    "section_title": "Alternative boot operation",
+    "page_number": 153,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.7",
+    "section_title": "Timing Values",
+    "page_number": 154,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.8",
+    "section_title": "Timing changes in HS200 and HS400 mode",
+    "page_number": 155,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.9",
+    "section_title": "Enhanced Strobe in HS400 Mode",
+    "page_number": 158,
+    "toc_page": 6,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.10",
+    "section_title": "H/W Reset Operation",
+    "page_number": 159,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.11",
+    "section_title": "Noise filtering timing for H/W Reset",
+    "page_number": 159,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "6.15.12",
+    "section_title": "Additional Timing changes in HS400 mode",
+    "page_number": 160,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.1",
+    "section_title": "OCR register",
+    "page_number": 161,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "7.2",
+    "section_title": "CID register",
+    "page_number": 162,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "7.2.1",
+    "section_title": "MID [127:120]",
+    "page_number": 162,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.2.2",
+    "section_title": "CBX [113:112]",
+    "page_number": 162,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.2.3",
+    "section_title": "OID [111:104]",
+    "page_number": 162,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.2.4",
+    "section_title": "PNM [103:56]",
+    "page_number": 162,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.2.5",
+    "section_title": "PRV [55:48]",
+    "page_number": 162,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.2.6",
+    "section_title": "PSN [47:16]",
+    "page_number": 162,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.2.7",
+    "section_title": "MDT [15:8]",
+    "page_number": 163,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.2.8",
+    "section_title": "CRC [7:1]",
+    "page_number": 163,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3",
+    "section_title": "CSD register",
+    "page_number": 163,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "7.3.1",
+    "section_title": "CSD_STRUCTURE [127:126]",
+    "page_number": 165,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.2",
+    "section_title": "SPEC_VERS [125:122]",
+    "page_number": 165,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.3",
+    "section_title": "TAAC [119:112]",
+    "page_number": 165,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.4",
+    "section_title": "NSAC [111:104]",
+    "page_number": 165,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.5",
+    "section_title": "TRAN_SPEED [103:96]",
+    "page_number": 166,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.6",
+    "section_title": "CCC [95:84]",
+    "page_number": 166,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.7",
+    "section_title": "READ_BL_LEN [83:80]",
+    "page_number": 166,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.8",
+    "section_title": "READ_BL_PARTIAL [79]",
+    "page_number": 167,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.9",
+    "section_title": "WRITE_BLK_MISALIGN [78]",
+    "page_number": 167,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.10",
+    "section_title": "READ_BLK_MISALIGN [77]",
+    "page_number": 167,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.11",
+    "section_title": "DSR_IMP [76]",
+    "page_number": 167,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.12",
+    "section_title": "C_SIZE [73:62]",
+    "page_number": 168,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.13",
+    "section_title": "VDD_R_CURR_MIN [61:59] and VDD_W_CURR_MIN [55:53]",
+    "page_number": 168,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.14",
+    "section_title": "VDD_R_CURR_MAX [58:56] and VDD_W_CURR_MAX [52:50]",
+    "page_number": 168,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.15",
+    "section_title": "C_SIZE_MULT [49:47]",
+    "page_number": 169,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.16",
+    "section_title": "ERASE_GRP_SIZE [46:42]",
+    "page_number": 169,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.17",
+    "section_title": "ERASE_GRP_MULT [41:37]",
+    "page_number": 169,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.18",
+    "section_title": "WP_GRP_SIZE [36:32]",
+    "page_number": 169,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.19",
+    "section_title": "WP_GRP_ENABLE [31]",
+    "page_number": 169,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.20",
+    "section_title": "DEFAULT_ECC [30:29]",
+    "page_number": 169,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.21",
+    "section_title": "R2W_FACTOR [28:26]",
+    "page_number": 170,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.22",
+    "section_title": "WRITE_BL_LEN [25:22]",
+    "page_number": 170,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.23",
+    "section_title": "WRITE_BL_PARTIAL[21]",
+    "page_number": 170,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.24",
+    "section_title": "CONTENT_PROT_APP [16]",
+    "page_number": 170,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.25",
+    "section_title": "FILE_FORMAT_GRP [15]",
+    "page_number": 170,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.26",
+    "section_title": "COPY [14]",
+    "page_number": 170,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.27",
+    "section_title": "PERM_WRITE_PROTECT [13]",
+    "page_number": 171,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.28",
+    "section_title": "TMP_WRITE_PROTECT [12]",
+    "page_number": 171,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.29",
+    "section_title": "FILE_FORMAT [11:10]",
+    "page_number": 171,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.30",
+    "section_title": "ECC [9:8]",
+    "page_number": 171,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.3.31",
+    "section_title": "CRC [7:1]",
+    "page_number": 172,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4",
+    "section_title": "Extended CSD register",
+    "page_number": 173,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "7.4.1",
+    "section_title": "EXT_SECURITY_ERR [505]",
+    "page_number": 178,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.2",
+    "section_title": "S_CMD_SET [504]",
+    "page_number": 178,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.3",
+    "section_title": "HPI_FEATURES [503]",
+    "page_number": 178,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.4",
+    "section_title": "BKOPS_SUPPORT [502]",
+    "page_number": 179,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.5",
+    "section_title": "MAX_PACKED_READS [501]",
+    "page_number": 179,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.6",
+    "section_title": "MAX_PACKED_WRITES [500]",
+    "page_number": 179,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.7",
+    "section_title": "DATA_TAG_SUPPORT [499]",
+    "page_number": 179,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.8",
+    "section_title": "TAG_UNIT_SIZE [498]",
+    "page_number": 179,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.9",
+    "section_title": "TAG_RES_SIZE [497]",
+    "page_number": 179,
+    "toc_page": 7,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.10",
+    "section_title": "CONTEXT_CAPABILITIES [496]",
+    "page_number": 180,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.11",
+    "section_title": "LARGE_UNIT_SIZE_M1 [495]",
+    "page_number": 180,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.12",
+    "section_title": "EXT_SUPPORT [494]",
+    "page_number": 180,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.13",
+    "section_title": "SUPPORTED_MODES [493]",
+    "page_number": 180,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.14",
+    "section_title": "FFU_FEATURES [492]",
+    "page_number": 180,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.15",
+    "section_title": "OPERATION_CODES_TIMEOUT [491]",
+    "page_number": 181,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.16",
+    "section_title": "FFU_ARG [490-487]",
+    "page_number": 181,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.17",
+    "section_title": "BARRIER_SUPPORT [486]",
+    "page_number": 181,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.18",
+    "section_title": "CMDQ_SUPPORT [308]",
+    "page_number": 181,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.19",
+    "section_title": "CMDQ_DEPTH [307]",
+    "page_number": 182,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.20",
+    "section_title": "NUMBER_OF_FW_SECTORS_CORRECTLY_PROGRAMMED [305-302]",
+    "page_number": 182,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.21",
+    "section_title": "VENDOR_PROPRIETARY_HEALTH_REPORT [301-270]",
+    "page_number": 182,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.22",
+    "section_title": "DEVICE_LIFE_TIME_EST_TYP_B [269]",
+    "page_number": 182,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.23",
+    "section_title": "DEVICE_LIFE_TIME_EST_TYP_A [268]",
+    "page_number": 183,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.24",
+    "section_title": "PRE_EOL_INFO [267]",
+    "page_number": 183,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.25",
+    "section_title": "OPTIMAL_READ_SIZE [266]",
+    "page_number": 184,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.26",
+    "section_title": "OPTIMAL_WRITE_SIZE [265]",
+    "page_number": 184,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.27",
+    "section_title": "OPTIMAL_TRIM_UNIT_SIZE [264]",
+    "page_number": 184,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.28",
+    "section_title": "DEVICE_VERSION [263-262]",
+    "page_number": 184,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.29",
+    "section_title": "FIRMWARE_VERSION [261-254]",
+    "page_number": 185,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.30",
+    "section_title": "CACHE_SIZE [252:249]",
+    "page_number": 185,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.31",
+    "section_title": "GENERIC_CMD6_TIME [248]",
+    "page_number": 185,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.32",
+    "section_title": "POWER_OFF_LONG_TIME [247]",
+    "page_number": 185,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.33",
+    "section_title": "BKOPS_STATUS [246]",
+    "page_number": 186,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.34",
+    "section_title": "CORRECTLY_PRG_SECTORS_NUM [245:242]",
+    "page_number": 186,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.35",
+    "section_title": "INI_TIMEOUT_AP [241]",
+    "page_number": 186,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.36",
+    "section_title": "CACHE_FLUSH_POLICY [240]",
+    "page_number": 187,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.37",
+    "section_title": "TRIM_MULT [232]",
+    "page_number": 187,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.38",
+    "section_title": "SEC_FEATURE_SUPPORT [231]",
+    "page_number": 188,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.39",
+    "section_title": "SEC_ERASE_MULT [230]",
+    "page_number": 189,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.40",
+    "section_title": "SEC_TRIM_MULT [229]",
+    "page_number": 189,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.41",
+    "section_title": "BOOT_INFO [228]",
+    "page_number": 190,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.42",
+    "section_title": "BOOT_SIZE_MULT [226]",
+    "page_number": 190,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.43",
+    "section_title": "ACC_SIZE [225]",
+    "page_number": 191,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.44",
+    "section_title": "HC_ERASE_GRP_SIZE [224]",
+    "page_number": 191,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.45",
+    "section_title": "ERASE_TIMEOUT_MULT [223]",
+    "page_number": 192,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.46",
+    "section_title": "REL_WR_SEC_C [222]",
+    "page_number": 192,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.47",
+    "section_title": "HC_WP_GRP_SIZE [221]",
+    "page_number": 192,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.48",
+    "section_title": "S_C_VCC[220] and S_C_VCCQ[219]",
+    "page_number": 193,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.49",
+    "section_title": "PRODUCTION_STATE_AWARENESS_TIMEOUT [218]",
+    "page_number": 193,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.50",
+    "section_title": "S_A_TIMEOUT [217]",
+    "page_number": 194,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.51",
+    "section_title": "SLEEP_NOTIFICATION_TIME [216]",
+    "page_number": 194,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.52",
+    "section_title": "SEC_COUNT [215:212]",
+    "page_number": 194,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.53",
+    "section_title": "SECURE_WP_INFO[211]",
+    "page_number": 195,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.54",
+    "section_title": "MIN_PERF_a_b_ff [210/:205] and MIN_PERF_DDR_a_b_ff [235:234]",
+    "page_number": 196,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.56",
+    "section_title": "PARTITION_SWITCH_TIME [199]",
+    "page_number": 198,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.57",
+    "section_title": "OUT_OF_INTERRUPT_TIME [198]",
+    "page_number": 198,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.58",
+    "section_title": "DRIVER_STRENGTH [197]",
+    "page_number": 199,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.59",
+    "section_title": "DEVICE_TYPE [196]",
+    "page_number": 200,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.60",
+    "section_title": "CSD_STRUCTURE [194]",
+    "page_number": 200,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.61",
+    "section_title": "EXT_CSD_REV [192]",
+    "page_number": 201,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.62",
+    "section_title": "CMD_SET [191]",
+    "page_number": 201,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.63",
+    "section_title": "CMD_SET_REV [189]",
+    "page_number": 201,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.64",
+    "section_title": "POWER_CLASS [187]",
+    "page_number": 201,
+    "toc_page": 8,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.65",
+    "section_title": "HS_TIMING [185]",
+    "page_number": 202,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.66",
+    "section_title": "STROBE_SUPPORT [184]",
+    "page_number": 202,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.67",
+    "section_title": "BUS_WIDTH [183]",
+    "page_number": 203,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.68",
+    "section_title": "ERASED_MEM_CONT [181]",
+    "page_number": 203,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.69",
+    "section_title": "PARTITION_CONFIG (before BOOT_CONFIG) [179]",
+    "page_number": 204,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.70",
+    "section_title": "BOOT_CONFIG_PROT[178]",
+    "page_number": 205,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.71",
+    "section_title": "BOOT_BUS_CONDITIONS [177]",
+    "page_number": 205,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.72",
+    "section_title": "ERASE_GROUP_DEF [175]",
+    "page_number": 207,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.73",
+    "section_title": "BOOT_WP_STATUS [174]",
+    "page_number": 207,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.74",
+    "section_title": "BOOT_WP [173]",
+    "page_number": 208,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.75",
+    "section_title": "USER_WP [171]",
+    "page_number": 210,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.76",
+    "section_title": "FW_CONFIG [169]",
+    "page_number": 211,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.77",
+    "section_title": "RPMB_SIZE_MULT [168]",
+    "page_number": 211,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.78",
+    "section_title": "WR_REL_SET [167]",
+    "page_number": 212,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.79",
+    "section_title": "WR_REL_PARAM [166]",
+    "page_number": 213,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.80",
+    "section_title": "SANITIZE_START[165]",
+    "page_number": 213,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.81",
+    "section_title": "BKOPS_START [164]",
+    "page_number": 214,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.82",
+    "section_title": "BKOPS_EN [163]",
+    "page_number": 214,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.83",
+    "section_title": "RST_n_FUNCTION [162]",
+    "page_number": 215,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.84",
+    "section_title": "HPI_MGMT [161]",
+    "page_number": 215,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.85",
+    "section_title": "PARTITIONING_SUPPORT [160]",
+    "page_number": 216,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.86",
+    "section_title": "MAX_ENH_SIZE_MULT [159:157]",
+    "page_number": 216,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.87",
+    "section_title": "PARTITIONS_ATTRIBUTE [156]",
+    "page_number": 217,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.88",
+    "section_title": "PARTITION_SETTING_COMPLETED [155]",
+    "page_number": 217,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.89",
+    "section_title": "GP_SIZE_MULT_GP0 - GP_SIZE_MULT_GP3 [154:143]",
+    "page_number": 218,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.90",
+    "section_title": "ENH_SIZE_MULT [142:140]",
+    "page_number": 219,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.91",
+    "section_title": "ENH_START_ADDR [139:136]",
+    "page_number": 219,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.92",
+    "section_title": "SEC_BAD_BLK_MGMNT [134]",
+    "page_number": 219,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.93",
+    "section_title": "PRODUCTION_STATE_AWARENESS [133]",
+    "page_number": 220,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.94",
+    "section_title": "TCASE_SUPPORT [132]",
+    "page_number": 220,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.95",
+    "section_title": "PERIODIC_WAKEUP [131]",
+    "page_number": 221,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.96",
+    "section_title": "PROGRAM_CID_CSD_DDR_SUPPORT [130]",
+    "page_number": 221,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.97",
+    "section_title": "VENDOR_SPECIFIC_FIELD [127:64]",
+    "page_number": 221,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.98",
+    "section_title": "NATIVE_SECTOR_SIZE [63]",
+    "page_number": 221,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.99",
+    "section_title": "USE_NATIVE_SECTOR [62]",
+    "page_number": 222,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.100",
+    "section_title": "DATA_SECTOR_SIZE [61]",
+    "page_number": 222,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.101",
+    "section_title": "INI_TIMEOUT_EMU [60]",
+    "page_number": 222,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.102",
+    "section_title": "CLASS_6_CTRL[59]",
+    "page_number": 222,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.103",
+    "section_title": "DYNCAP_NEEDED [58]",
+    "page_number": 222,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.104",
+    "section_title": "EXCEPTION_EVENTS_CTRL [57:56]",
+    "page_number": 223,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.105",
+    "section_title": "EXCEPTION_EVENTS_STATUS [55:54]",
+    "page_number": 223,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.106",
+    "section_title": "EXT_PARTITIONS_ATTRIBUTE [53:52]",
+    "page_number": 224,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.107",
+    "section_title": "CONTEXT_CONF [51:37]",
+    "page_number": 225,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.108",
+    "section_title": "PACKED_COMMAND_STATUS [36]",
+    "page_number": 225,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.109",
+    "section_title": "PACKED_FAILURE_INDEX [35]",
+    "page_number": 226,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.110",
+    "section_title": "POWER_OFF_NOTIFICATION [34]",
+    "page_number": 226,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.111",
+    "section_title": "CACHE_CTRL [33]",
+    "page_number": 226,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.112",
+    "section_title": "FLUSH_CACHE [32]",
+    "page_number": 227,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.113",
+    "section_title": "BARRIER_CTRL [31]",
+    "page_number": 227,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.114",
+    "section_title": "MODE_CONFIG [30]",
+    "page_number": 227,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.115",
+    "section_title": "MODE_OPERATION_CODES [29]",
+    "page_number": 228,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.116",
+    "section_title": "FFU_STATUS [26]",
+    "page_number": 228,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.117",
+    "section_title": "PRE_LOADING_DATA_SIZE [25-22]",
+    "page_number": 228,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.118",
+    "section_title": "MAX_PRE_LOADING_DATA_SIZE [21-18]",
+    "page_number": 229,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.119",
+    "section_title": "PRODUCT_STATE_AWARENESS_ENABLEMENT [17]",
+    "page_number": 229,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.120",
+    "section_title": "SECURE_REMOVAL_TYPE [16]",
+    "page_number": 230,
+    "toc_page": 9,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.4.121",
+    "section_title": "CMDQ_MODE_EN [15]",
+    "page_number": 230,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.5",
+    "section_title": "RCA register",
+    "page_number": 231,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "7.6",
+    "section_title": "DSR register",
+    "page_number": 231,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "7.8",
+    "section_title": "Authenticated Device Configuration Area",
+    "page_number": 231,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "7.8.1",
+    "section_title": "Authenticated Device Configuration Area[1] : SECURE_WP_MODE_ENABLE",
+    "page_number": 231,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.8.2",
+    "section_title": "Authenticated Device Configuration Area[2] : SECURE _WP_MODE_CONFIG",
+    "page_number": 232,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "8.1",
+    "section_title": "Error correction codes (ECC)",
+    "page_number": 233,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "8.2",
+    "section_title": "Cyclic redundancy codes (CRC)",
+    "page_number": 234,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "8.2.2",
+    "section_title": "CRC16",
+    "page_number": 235,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.1",
+    "section_title": "Power-up",
+    "page_number": 237,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.2",
+    "section_title": "Programmable Device output driver",
+    "page_number": 242,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.3",
+    "section_title": "Bus operating conditions",
+    "page_number": 244,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.3.1",
+    "section_title": "Power supply: e\u2022MMC",
+    "page_number": 244,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.3.2",
+    "section_title": "Power supply: e2\u2022MMC",
+    "page_number": 245,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.3.3",
+    "section_title": "Power supply Voltages",
+    "page_number": 246,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.3.4",
+    "section_title": "Bus signal line load",
+    "page_number": 247,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.3.5",
+    "section_title": "HS400 reference load",
+    "page_number": 248,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.4",
+    "section_title": "Overshoot/Undershoot Specification",
+    "page_number": 249,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.5",
+    "section_title": "Bus signal levels",
+    "page_number": 249,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.5.1",
+    "section_title": "Open-drain mode bus signal level",
+    "page_number": 250,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.5.2",
+    "section_title": "Push-pull mode bus signal level\u2014 e\u2022MMC",
+    "page_number": 250,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.5.3",
+    "section_title": "Bus Operating Conditions for HS200 and HS400",
+    "page_number": 250,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.5.4",
+    "section_title": "Device Output Driver Requirements for HS200 and HS400",
+    "page_number": 251,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.6",
+    "section_title": "Bus timing",
+    "page_number": 253,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.6.1",
+    "section_title": "Device interface timings",
+    "page_number": 253,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.7",
+    "section_title": "Bus timing for DAT signals during 2x data rate operation",
+    "page_number": 255,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.7.1",
+    "section_title": "Dual data rate interface timings",
+    "page_number": 256,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.8",
+    "section_title": "Bus Timing Specification in HS200 mode",
+    "page_number": 257,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.8.1",
+    "section_title": "HS200 Clock Timing",
+    "page_number": 257,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.8.2",
+    "section_title": "HS200 Device Input Timing",
+    "page_number": 258,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.8.3",
+    "section_title": "HS200 Device Output Timing",
+    "page_number": 259,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.9",
+    "section_title": "Temperature Conditions",
+    "page_number": 260,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.10",
+    "section_title": "Bus Timing Specification in HS400 mode",
+    "page_number": 261,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 2
+  },
+  {
+    "section_number": "10.10.1",
+    "section_title": "HS400 Device Input Timing",
+    "page_number": 261,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.10.2",
+    "section_title": "HS400 Device Output Timing",
+    "page_number": 262,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "10.10.3",
+    "section_title": "HS400 Device Command Output Timing",
+    "page_number": 264,
+    "toc_page": 10,
+    "pattern_used": 0,
+    "level": 3
+  },
+  {
+    "section_number": "7.7",
+    "section_title": "QSR",
+    "page_number": 231,
+    "toc_page": 10,
+    "pattern_used": 3,
+    "level": 2
+  },
+  {
+    "section_number": "8.2.1",
+    "section_title": "CRC7",
+    "page_number": 234,
+    "toc_page": 10,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "5.1",
+    "section_title": "Changing the password",
+    "page_number": 280,
+    "toc_page": 10,
+    "pattern_used": 3,
+    "level": 2
+  },
+  {
+    "section_number": "6.1",
+    "section_title": "Bus initialization",
+    "page_number": 281,
+    "toc_page": 10,
+    "pattern_used": 3,
+    "level": 2
+  },
+  {
+    "section_number": "13.1",
+    "section_title": "Queuing a Transaction (CMD44+CMD45)",
+    "page_number": 293,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 2
+  },
+  {
+    "section_number": "13.2",
+    "section_title": "Checking the Queue Status (SEND_STATUS - CMD13)",
+    "page_number": 293,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 2
+  },
+  {
+    "section_number": "13.3",
+    "section_title": "Execution of a Queued Task (CMD46/CMD47)",
+    "page_number": 294,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 2
+  },
+  {
+    "section_number": "1.1.",
+    "section_title": "Background",
+    "page_number": 295,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "1.2.",
+    "section_title": "Overview and Scope",
+    "page_number": 295,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "1.3.",
+    "section_title": "Feature Summary",
+    "page_number": 295,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "1.4.",
+    "section_title": "Outside of Scope",
+    "page_number": 295,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "1.5.",
+    "section_title": "Acronyms and Conventions",
+    "page_number": 296,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "2.1.",
+    "section_title": "Task Issuance: Task Descriptor List / Doorbell Register",
+    "page_number": 297,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "2.2.",
+    "section_title": "Task Processing by Host Hardware",
+    "page_number": 298,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "2.3.",
+    "section_title": "Task Selection and Execution",
+    "page_number": 298,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "2.4.",
+    "section_title": "Task Completion: Interrupts and Interrupt Coalescing",
+    "page_number": 299,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "2.5.",
+    "section_title": "Direct Command (DCMD) Submission",
+    "page_number": 299,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "2.6.",
+    "section_title": "Queue-Barrier (QBR) Tasks",
+    "page_number": 299,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "2.7.",
+    "section_title": "Halt Feature",
+    "page_number": 300,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "2.8.",
+    "section_title": "Error Detection and Recovery",
+    "page_number": 301,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "3.1.",
+    "section_title": "Task Descriptor for Data Transfer Tasks",
+    "page_number": 302,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "3.2.",
+    "section_title": "Transfer Descriptors",
+    "page_number": 303,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "3.3.",
+    "section_title": "Task Descriptor for Direct-Command (DCMD) Tasks",
+    "page_number": 304,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "3.4.",
+    "section_title": "Task Descriptor for Queue-Barrier Task (QBR)",
+    "page_number": 306,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "3.5.",
+    "section_title": "Task List",
+    "page_number": 306,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.1.",
+    "section_title": "Register Map",
+    "page_number": 307,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.3.",
+    "section_title": "CQBASE+04h: CQCAP \u2013 Command Queuing Capabilities",
+    "page_number": 308,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.4.",
+    "section_title": "CQBASE+08h: CQCFG \u2013 Command Queuing Configuration",
+    "page_number": 309,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.5.",
+    "section_title": "CQBASE+0Ch: CQCTL \u2013 Command Queuing Control",
+    "page_number": 310,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.6.",
+    "section_title": "CQBASE+10h: CQIS \u2013 Command Queuing Interrupt Status",
+    "page_number": 311,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.7.",
+    "section_title": "CQBASE+14h: CQISTE \u2013 Command Queuing Interrupt Status Enable",
+    "page_number": 311,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.8.",
+    "section_title": "CQBASE+18h: CQISGE \u2013 Command Queuing Interrupt Signal Enable",
+    "page_number": 312,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.9.",
+    "section_title": "CQBASE+1Ch: CQIC \u2013 Interrupt Coalescing",
+    "page_number": 313,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.11.",
+    "section_title": "CQBASE+24h: CQTDLBAU \u2013 Command Queuing Task Descriptor List Base Address Upper 32 Bits",
+    "page_number": 314,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.12.",
+    "section_title": "CQBASE+28h: CQTDBR \u2013 Command Queuing Task Doorbell",
+    "page_number": 315,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.13.",
+    "section_title": "CQBASE+2Ch: CQTCN \u2013 Task Completion Notification",
+    "page_number": 315,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.14.",
+    "section_title": "CQBASE+30h: CQDQS \u2013 Device Queue Status",
+    "page_number": 315,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.15.",
+    "section_title": "CQBASE+34h: CQDPT \u2013 Device Pending Tasks",
+    "page_number": 316,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.16.",
+    "section_title": "CQBASE+38h: CQTCLR \u2013 Task Clear",
+    "page_number": 316,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.17.",
+    "section_title": "CQBASE+40h: CQSSC1 \u2013 Send Status Configuration 1",
+    "page_number": 317,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.18.",
+    "section_title": "CQBASE+44h: CQSSC2 \u2013 Send Status Configuration 2",
+    "page_number": 317,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.19.",
+    "section_title": "CQBASE+48h: CQCRDCT \u2013 Command Response for Direct-Command Task",
+    "page_number": 318,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.20.",
+    "section_title": "CQBASE+50h: CQRMEM \u2013 Response Mode Error Mask",
+    "page_number": 318,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.21.",
+    "section_title": "CQBASE+54h: CQTERRI - Task Error Information",
+    "page_number": 319,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.22.",
+    "section_title": "CQBASE+58h: CQCRI \u2013 Command Response Index",
+    "page_number": 320,
+    "toc_page": 11,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "4.23.",
+    "section_title": "CQBASE+5Ch: CQCRA \u2013 Command Response Argument",
+    "page_number": 320,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "5.1.",
+    "section_title": "Normal Interrupt Status Register (Offset 030h)",
+    "page_number": 320,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "5.2.",
+    "section_title": "Normal Interrupt Status Enable Register (Offset 034h)",
+    "page_number": 320,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "5.3.",
+    "section_title": "Normal Interrupt Signal Enable Register (Offset 038h)",
+    "page_number": 320,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "6.1.",
+    "section_title": "Command Queuing Initialization Sequence",
+    "page_number": 321,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "6.2.",
+    "section_title": "Task Issuance Sequence",
+    "page_number": 321,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "6.3.",
+    "section_title": "Task Completion Sequence",
+    "page_number": 323,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "6.4.",
+    "section_title": "Task Discard Sequence (inc. Halting CQE)",
+    "page_number": 324,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "6.5.",
+    "section_title": "Error Detect and Recovery",
+    "page_number": 325,
+    "toc_page": 12,
+    "pattern_used": 3,
+    "level": 3
+  },
+  {
+    "section_number": "1.70",
+    "section_title": "V -1.95 V V voltage Range",
+    "page_number": 250,
+    "toc_page": 19,
+    "pattern_used": 3,
+    "level": 2
+  },
+  {
+    "section_number": "1.1",
+    "section_title": "V-1.3 V V range e\u2022MMC",
+    "page_number": 250,
+    "toc_page": 19,
+    "pattern_used": 3,
+    "level": 2
+  }
+]

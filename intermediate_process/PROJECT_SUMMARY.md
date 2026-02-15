@@ -246,9 +246,9 @@ mypy src/
 - [x] Logging configured
 - [x] Streamlit UI skeleton working
 - [x] Documentation complete
-- [ ] **API key added to `.env`** ⚠️ **ACTION REQUIRED**
-- [ ] Docker services tested
-- [ ] Streamlit UI accessible
+- [x] **API key added to `.env`** ⚠️ **ACTION REQUIRED**
+- [x] Docker services tested
+- [x] Streamlit UI accessible
 
 ---
 

@@ -1,4 +1,4 @@
-.PHONY: help install dev-install test lint format clean docker-build docker-up docker-down docker-logs
+.PHONY: help install dev-install test lint format clean docker-build docker-up docker-down docker-logs ingest list shell
 
 help:
 	@echo "Storage Protocol Assistant - Makefile commands"
@@ -16,6 +16,11 @@ help:
 	@echo "  make docker-up    - Start services"
 	@echo "  make docker-down  - Stop services"
 	@echo "  make docker-logs  - View logs"
+	@echo "  make shell        - Open shell in app container"
+	@echo ""
+	@echo "Ingestion:"
+	@echo "  make ingest FILE=path PROTOCOL=name VERSION=ver - Ingest a document"
+	@echo "  make list         - List all ingested documents"
 	@echo ""
 
 install:
@@ -61,3 +66,30 @@ docker-logs:
 docker-clean:
 	docker-compose down -v
 	docker system prune -f
+
+shell:
+	docker-compose exec app /bin/bash
+
+ingest:
+ifndef FILE
+	@echo "Error: FILE is required"
+	@echo "Usage: make ingest FILE=/path/to/spec.pdf PROTOCOL=eMMC VERSION=5.1"
+	@exit 1
+endif
+ifndef PROTOCOL
+	@echo "Error: PROTOCOL is required"
+	@echo "Usage: make ingest FILE=/path/to/spec.pdf PROTOCOL=eMMC VERSION=5.1"
+	@exit 1
+endif
+ifndef VERSION
+	@echo "Error: VERSION is required"
+	@echo "Usage: make ingest FILE=/path/to/spec.pdf PROTOCOL=eMMC VERSION=5.1"
+	@exit 1
+endif
+	docker-compose exec app python -m src.ingestion.ingest_spec ingest \
+		--file $(FILE) \
+		--protocol $(PROTOCOL) \
+		--version $(VERSION)
+
+list:
+	docker-compose exec app python -m src.ingestion.ingest_spec list

@@ -18,6 +18,7 @@ from src.utils.config import settings
 from src.utils.logger import setup_logging, get_logger
 from src.database.qdrant_client import QdrantVectorStore
 from src.database.sqlite_client import SQLiteClient
+from src.agents.rag_pipeline import get_rag_pipeline
 
 # Initialize logging
 setup_logging(log_level=settings.log_level)
@@ -98,13 +99,25 @@ def render_sidebar():
 
         min_confidence = st.slider(
             "Minimum Confidence",
-            min_value=0.5,
+            min_value=0.0,
             max_value=1.0,
-            value=0.7,
+            value=0.0,
             step=0.05,
-            help="Minimum confidence threshold for answers",
+            help="Minimum similarity score threshold (0.0 = no threshold)",
         )
-        st.session_state.min_confidence = min_confidence
+        st.session_state.min_score = min_confidence if min_confidence > 0 else None
+
+        use_llm = st.toggle(
+            "🤖 Use LLM (DeepSeek)",
+            value=True,
+            help="Enable AI-powered answer generation with citations. Requires DeepSeek API key."
+        )
+        st.session_state.use_llm = use_llm
+
+        if use_llm:
+            st.info("✨ LLM mode: Generates comprehensive answers with citations")
+        else:
+            st.warning("⚠️ Simple mode: Shows raw retrieval results only")
 
         st.divider()
 
@@ -193,7 +206,7 @@ def render_chat_interface():
 
 def process_query(query: str) -> dict:
     """
-    Process user query and generate response.
+    Process user query using RAG pipeline.
 
     Args:
         query: User query
@@ -201,91 +214,95 @@ def process_query(query: str) -> dict:
     Returns:
         Response with answer and citations
     """
-    query_id = str(uuid.uuid4())
-
     try:
-        # Get retrieval parameters from session state
+        # Get parameters from session state
         top_k = st.session_state.get("top_k", 10)
+        min_score = st.session_state.get("min_score", None)
+        use_llm = st.session_state.get("use_llm", True)
 
-        # Perform vector search
-        vector_store = st.session_state.qdrant_client
-        query_vector = vector_store.embed_text(query)
+        if use_llm:
+            # Use full RAG pipeline with LLM
+            pipeline = get_rag_pipeline()
+            response = pipeline.process(
+                query=query,
+                top_k=top_k,
+                min_score=min_score,
+                model="deepseek-reasoner"
+            )
 
-        # Search Qdrant
-        search_results = vector_store.client.query_points(
-            collection_name='protocol_specs',
-            query=query_vector,
-            limit=top_k,
-            with_payload=True
-        )
+            # Format citations for UI
+            formatted_citations = []
+            for cit in response['citations']:
+                pages = ', '.join(map(str, cit['page_numbers'])) if cit['page_numbers'] else 'N/A'
+                formatted_citations.append({
+                    'source': "eMMC 5.1",  # TODO: Extract from doc_id
+                    'section': cit['section_path'],
+                    'page': pages,
+                    'text': cit['text_preview'],
+                    'confidence': cit['score'],
+                })
 
-        if not search_results.points:
             return {
-                "query_id": query_id,
-                "answer": "I couldn't find any relevant information in the protocol specifications. Please try rephrasing your question.",
-                "citations": [],
-                "confidence": 0.0,
+                "query_id": response['query_id'],
+                "answer": response['answer'],
+                "citations": formatted_citations,
+                "confidence": response['confidence'],
+                "metadata": response.get('metadata', {}),
             }
 
-        # Format citations
-        citations = []
-        context_parts = []
+        else:
+            # Fallback to simple vector search (legacy mode)
+            query_id = str(uuid.uuid4())
+            vector_store = st.session_state.qdrant_client
 
-        for i, point in enumerate(search_results.points[:5], 1):  # Top 5 for context
-            payload = point.payload
-            score = point.score
+            results = vector_store.search(
+                query=query,
+                top_k=top_k,
+                min_score=min_score
+            )
 
-            section = payload.get('section_title', 'N/A')
-            pages = payload.get('page_numbers', [])
-            text = payload.get('text', '')
-            doc_id = payload.get('doc_id', 'N/A')
+            if not results:
+                return {
+                    "query_id": query_id,
+                    "answer": "I couldn't find any relevant information. Please try rephrasing your question.",
+                    "citations": [],
+                    "confidence": 0.0,
+                }
 
-            # Extract protocol and version from doc_id (e.g., "eMMC_5_1_...")
-            protocol = "eMMC"
-            version = "5.1"
+            # Simple answer without LLM
+            top_result = results[0]
+            answer = f"""**Relevant Information:**
 
-            citation = {
-                'source': f"{protocol} {version}",
-                'section': section,
-                'page': ', '.join(map(str, pages)) if pages else 'N/A',
-                'text': text[:300] + '...' if len(text) > 300 else text,
-                'confidence': score,
-            }
-            citations.append(citation)
+{top_result['text'][:800]}...
 
-            # Add to context for answer
-            context_parts.append(f"[{i}] From {section} (pages {citation['page']}):\n{text[:500]}")
+*This is a simple retrieval result. Enable LLM mode for comprehensive answers with citations.*
 
-        # Create context-aware answer
-        context = "\n\n".join(context_parts[:3])  # Top 3 chunks
-
-        # Simple answer format (without LLM for now)
-        answer = f"""Based on the {protocol} {version} specification:
-
-**Relevant Information:**
-
-{search_results.points[0].payload.get('text', '')[:800]}...
-
-*Please see the citations below for complete details and additional context.*
-
-**Top Match:** {search_results.points[0].payload.get('section_title', 'N/A')} (Confidence: {search_results.points[0].score:.2%})
+**Top Match:** {top_result.get('section_title', 'N/A')} (Confidence: {top_result['score']:.2%})
 """
 
-        response = {
-            "query_id": query_id,
-            "answer": answer,
-            "citations": citations,
-            "confidence": search_results.points[0].score if search_results.points else 0.0,
-        }
+            citations = []
+            for result in results[:5]:
+                pages = ', '.join(map(str, result.get('page_numbers', [])))
+                citations.append({
+                    'source': 'eMMC 5.1',
+                    'section': result.get('section_title', 'N/A'),
+                    'page': pages or 'N/A',
+                    'text': result.get('text', '')[:300] + '...',
+                    'confidence': result.get('score', 0.0),
+                })
 
-        logger.info(f"Processed query: {query_id}, found {len(citations)} results")
-        return response
+            return {
+                "query_id": query_id,
+                "answer": answer,
+                "citations": citations,
+                "confidence": results[0]['score'],
+            }
 
     except Exception as e:
         logger.error(f"Error in process_query: {e}")
         return {
-            "query_id": query_id,
-            "answer": f"An error occurred while processing your query: {str(e)}",
+            "query_id": str(uuid.uuid4()),
+            "answer": f"An error occurred: {str(e)}\n\nPlease check that your DeepSeek API key is set correctly.",
             "citations": [],
             "confidence": 0.0,
         }

@@ -144,11 +144,12 @@ pytest tests/ --cov=src --cov-report=html
    - ✅ Retriever Agent (orchestrate hybrid search)
    - ✅ Answer Generator Agent (create citation-backed answers)
 
-4. **Integrate with Streamlit UI** - **NEXT**
-   - Connect agents to `app.py`
-   - Display agent reasoning steps
-   - Show citations with page numbers
-   - Add document upload interface
+4. ✅ **~~Integrate with Streamlit UI~~** - **COMPLETE**
+   - ✅ Connect agents to `app.py`
+   - ✅ Display agent reasoning steps (query type, strategy, latency breakdown)
+   - ✅ Show citations with page numbers and dynamic source names
+   - ✅ Add document upload interface with protocol/version input
+   - ✅ Retrieval strategy selector (auto/vector/hybrid)
 
 5. **Testing & Validation**
    - Create test query dataset
@@ -266,7 +267,6 @@ Key settings in `.env`:
 - None (ready for next phase)
 
 ❌ **Not Started**:
-- Full UI integration
 - Production testing suite
 
 ---

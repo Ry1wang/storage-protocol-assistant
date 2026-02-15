@@ -2,6 +2,7 @@
 
 import streamlit as st
 import uuid
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
@@ -85,6 +86,12 @@ def render_sidebar():
 
         st.divider()
 
+        # Document upload
+        st.subheader("Upload Document")
+        _render_upload_form()
+
+        st.divider()
+
         # Settings
         st.subheader("Settings")
 
@@ -137,6 +144,55 @@ def render_sidebar():
             st.metric("Total Chunks", total_chunks)
 
         st.caption(f"Version: 0.1.0 (MVP)")
+
+
+def _render_upload_form():
+    """Render the document upload form in the sidebar."""
+    uploaded_file = st.file_uploader(
+        "Upload PDF",
+        type=["pdf"],
+        help="Upload a protocol specification PDF",
+    )
+
+    if uploaded_file is not None:
+        protocol = st.text_input("Protocol", placeholder="e.g. eMMC, UFS")
+        version = st.text_input("Version", placeholder="e.g. 5.1")
+        title = st.text_input("Title (optional)", placeholder="e.g. eMMC Specification v5.1")
+
+        if st.button("Ingest Document", type="primary", disabled=not (protocol and version)):
+            with st.spinner("Ingesting document..."):
+                try:
+                    from src.ingestion.ingest_spec import SpecificationIngester
+
+                    # Save uploaded file to temp location
+                    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
+                        tmp.write(uploaded_file.getvalue())
+                        tmp_path = tmp.name
+
+                    ingester = SpecificationIngester(
+                        vector_store=st.session_state.qdrant_client,
+                        metadata_db=st.session_state.sqlite_client,
+                    )
+
+                    doc_id = ingester.ingest_document(
+                        file_path=tmp_path,
+                        protocol=protocol.strip(),
+                        version=version.strip(),
+                        title=title.strip() or None,
+                    )
+
+                    # Clean up temp file
+                    Path(tmp_path).unlink(missing_ok=True)
+
+                    st.success(f"Ingested! Doc ID: `{doc_id}`")
+                    logger.info(f"Document ingested via UI: {doc_id}")
+
+                    # Force a rerun so document filters refresh
+                    st.rerun()
+
+                except Exception as e:
+                    logger.error(f"Upload ingestion failed: {e}")
+                    st.error(f"Ingestion failed: {e}")
 
 
 def _resolve_doc_source(doc_id: str) -> str:

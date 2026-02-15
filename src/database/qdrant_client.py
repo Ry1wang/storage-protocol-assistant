@@ -172,6 +172,58 @@ class QdrantVectorStore:
         logger.info(f"Found {len(results)} results for query")
         return results
 
+    def get_all_chunks(
+        self,
+        doc_id: Optional[str] = None,
+        batch_size: int = 100,
+    ) -> List[Dict[str, Any]]:
+        """
+        Fetch all chunks from the collection using scroll API.
+
+        Args:
+            doc_id: Optional filter to only return chunks for a specific document
+            batch_size: Number of points per scroll request
+
+        Returns:
+            List of chunk dicts with text and metadata (no vectors)
+        """
+        scroll_filter = None
+        if doc_id:
+            scroll_filter = Filter(
+                must=[{"key": "doc_id", "match": {"value": doc_id}}]
+            )
+
+        all_chunks = []
+        offset = None
+
+        while True:
+            results, next_offset = self.client.scroll(
+                collection_name=self.collection_name,
+                scroll_filter=scroll_filter,
+                limit=batch_size,
+                offset=offset,
+                with_payload=True,
+                with_vectors=False,
+            )
+
+            for point in results:
+                all_chunks.append({
+                    "chunk_id": point.payload["chunk_id"],
+                    "text": point.payload["text"],
+                    "doc_id": point.payload["doc_id"],
+                    "page_numbers": point.payload.get("page_numbers", []),
+                    "section_title": point.payload.get("section_title"),
+                    "section_path": point.payload.get("section_path"),
+                    "chunk_type": point.payload.get("chunk_type", "text"),
+                })
+
+            if next_offset is None:
+                break
+            offset = next_offset
+
+        logger.info(f"Fetched {len(all_chunks)} chunks from Qdrant")
+        return all_chunks
+
     def delete_document(self, doc_id: str) -> None:
         """
         Delete all chunks for a document.

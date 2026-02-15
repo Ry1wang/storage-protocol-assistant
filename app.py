@@ -107,6 +107,14 @@ def render_sidebar():
         )
         st.session_state.min_score = min_confidence if min_confidence > 0 else None
 
+        retrieval_strategy = st.selectbox(
+            "Retrieval Strategy",
+            options=["auto", "vector", "hybrid"],
+            index=0,
+            help="'auto' lets the router decide. 'vector' uses semantic search. 'hybrid' combines vector + BM25 keyword search.",
+        )
+        st.session_state.retrieval_strategy = retrieval_strategy
+
         use_llm = st.toggle(
             "🤖 Use LLM (DeepSeek)",
             value=True,
@@ -131,6 +139,57 @@ def render_sidebar():
         st.caption(f"Version: 0.1.0 (MVP)")
 
 
+def _resolve_doc_source(doc_id: str) -> str:
+    """Resolve doc_id to a human-readable source name via SQLite."""
+    try:
+        db = st.session_state.get("sqlite_client")
+        if db:
+            doc = db.get_document(doc_id)
+            if doc:
+                return f"{doc.protocol} {doc.version}"
+    except Exception:
+        pass
+    return doc_id
+
+
+def _render_reasoning_steps(metadata: dict):
+    """Render pipeline reasoning steps in an expander."""
+    with st.expander("🔍 Agent Reasoning", expanded=False):
+        cols = st.columns(3)
+        with cols[0]:
+            query_type = metadata.get("query_type", "N/A")
+            st.markdown(f"**Query Type:** `{query_type}`")
+        with cols[1]:
+            strategy = metadata.get("retrieval_strategy", "N/A")
+            st.markdown(f"**Strategy:** `{strategy}`")
+        with cols[2]:
+            chunks = metadata.get("num_chunks_retrieved", "N/A")
+            st.markdown(f"**Chunks Retrieved:** `{chunks}`")
+
+        # Latency breakdown
+        total = metadata.get("total_latency")
+        if total is not None:
+            st.markdown("**Latency Breakdown:**")
+            routing_ms = metadata.get("routing_latency", 0) * 1000
+            retrieval_ms = metadata.get("retrieval_latency", 0) * 1000
+            generation_ms = metadata.get("generation_latency", 0) * 1000
+            st.markdown(
+                f"- Routing: `{routing_ms:.0f}ms` · "
+                f"Retrieval: `{retrieval_ms:.0f}ms` · "
+                f"Generation: `{generation_ms:.0f}ms` · "
+                f"**Total: `{total * 1000:.0f}ms`**"
+            )
+
+        # Token usage
+        usage = metadata.get("token_usage", {})
+        if usage:
+            prompt_tok = usage.get("prompt_tokens", 0)
+            completion_tok = usage.get("completion_tokens", 0)
+            st.markdown(
+                f"**Tokens:** prompt={prompt_tok}, completion={completion_tok}"
+            )
+
+
 def render_chat_interface():
     """Render main chat interface."""
     st.title("💬 Ask About Storage Protocols")
@@ -141,7 +200,7 @@ def render_chat_interface():
             st.markdown(message["content"])
 
             # Display citations if available
-            if "citations" in message:
+            if "citations" in message and message["citations"]:
                 with st.expander("📖 Citations", expanded=False):
                     for i, citation in enumerate(message["citations"], 1):
                         st.markdown(f"""
@@ -154,6 +213,10 @@ def render_chat_interface():
                         Confidence: {citation.get('confidence', 0):.2%}
                         """)
                         st.divider()
+
+            # Display reasoning steps if available
+            if "metadata" in message and message["metadata"]:
+                _render_reasoning_steps(message["metadata"])
 
     # Chat input
     if prompt := st.chat_input("Ask a question about storage protocols..."):
@@ -172,11 +235,14 @@ def render_chat_interface():
                     # Display response
                     st.markdown(response["answer"])
 
+                    metadata = response.get("metadata", {})
+
                     # Add assistant message
                     st.session_state.messages.append({
                         "role": "assistant",
                         "content": response["answer"],
                         "citations": response.get("citations", []),
+                        "metadata": metadata,
                     })
 
                     # Display citations
@@ -193,6 +259,10 @@ def render_chat_interface():
                                 Confidence: {citation.get('confidence', 0):.2%}
                                 """)
                                 st.divider()
+
+                    # Display reasoning steps
+                    if metadata:
+                        _render_reasoning_steps(metadata)
 
                 except Exception as e:
                     logger.error(f"Error processing query: {e}")
@@ -219,23 +289,31 @@ def process_query(query: str) -> dict:
         top_k = st.session_state.get("top_k", 10)
         min_score = st.session_state.get("min_score", None)
         use_llm = st.session_state.get("use_llm", True)
+        strategy_override = st.session_state.get("retrieval_strategy", "auto")
 
         if use_llm:
             # Use full RAG pipeline with LLM
             pipeline = get_rag_pipeline()
-            response = pipeline.process(
-                query=query,
-                top_k=top_k,
-                min_score=min_score,
-                model="deepseek-reasoner"
-            )
+
+            # Apply strategy override if not "auto"
+            kwargs = {
+                "query": query,
+                "top_k": top_k,
+                "min_score": min_score,
+                "model": "deepseek-reasoner",
+            }
+            if strategy_override != "auto":
+                kwargs["strategy_override"] = strategy_override
+
+            response = pipeline.process(**kwargs)
 
             # Format citations for UI
             formatted_citations = []
             for cit in response['citations']:
                 pages = ', '.join(map(str, cit['page_numbers'])) if cit['page_numbers'] else 'N/A'
+                source = _resolve_doc_source(cit.get('doc_id', ''))
                 formatted_citations.append({
-                    'source': "eMMC 5.1",  # TODO: Extract from doc_id
+                    'source': source,
                     'section': cit['section_path'],
                     'page': pages,
                     'text': cit['text_preview'],
@@ -283,8 +361,9 @@ def process_query(query: str) -> dict:
             citations = []
             for result in results[:5]:
                 pages = ', '.join(map(str, result.get('page_numbers', [])))
+                source = _resolve_doc_source(result.get('doc_id', ''))
                 citations.append({
-                    'source': 'eMMC 5.1',
+                    'source': source,
                     'section': result.get('section_title', 'N/A'),
                     'page': pages or 'N/A',
                     'text': result.get('text', '')[:300] + '...',

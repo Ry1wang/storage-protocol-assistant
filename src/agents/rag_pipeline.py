@@ -36,6 +36,7 @@ class RAGPipeline:
         top_k: Optional[int] = None,
         min_score: Optional[float] = None,
         model: str = "deepseek-reasoner",
+        strategy_override: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
         Process a query through the complete RAG pipeline.
@@ -45,6 +46,8 @@ class RAGPipeline:
             top_k: Number of chunks to retrieve (uses router suggestion if None)
             min_score: Minimum similarity score (uses router suggestion if None)
             model: LLM model for answer generation
+            strategy_override: Force a retrieval strategy ("vector" or "hybrid"),
+                bypassing the router's recommendation
 
         Returns:
             Dict with:
@@ -68,6 +71,11 @@ class RAGPipeline:
             query_type = routing['query_type']
             strategy = routing['retrieval_strategy']
             search_params = routing['search_params']
+
+            # Override strategy if explicitly requested
+            if strategy_override:
+                logger.info(f"[{query_id}] Strategy override: {strategy} -> {strategy_override}")
+                strategy = strategy_override
 
             # Override with user-provided params if specified
             if top_k is not None:

@@ -21,6 +21,9 @@ pdf2image>=1.17.0
 pillow>=10.0.0
 pdfplumber>=0.10.0
 
+# BM25 Keyword Search
+rank-bm25>=0.2.2
+
 # Text Processing (optional - simplified for MVP)
 # langchain>=0.1.0,<0.2.0
 # langchain-community>=0.0.19

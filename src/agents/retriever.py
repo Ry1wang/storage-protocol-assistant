@@ -1,9 +1,11 @@
 """Retriever Agent - Orchestrates hybrid search and result ranking."""
 
 from typing import List, Dict, Any, Optional
+from collections import Counter
 import time
 
 from ..database.qdrant_client import QdrantVectorStore
+from ..retrieval.hybrid_search import HybridSearch
 from ..utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -28,6 +30,7 @@ class RetrieverAgent:
             vector_store: QdrantVectorStore instance (creates new if None)
         """
         self.vector_store = vector_store or QdrantVectorStore()
+        self.hybrid_search = HybridSearch(vector_store=self.vector_store)
         logger.info("RetrieverAgent initialized")
 
     def retrieve(
@@ -128,7 +131,7 @@ class RetrieverAgent:
         filters: Optional[Dict[str, Any]]
     ) -> List[Dict[str, Any]]:
         """
-        Perform hybrid search (vector + keyword).
+        Perform hybrid search (vector + BM25 keyword) with RRF fusion.
 
         Args:
             query: Search query
@@ -139,10 +142,17 @@ class RetrieverAgent:
         Returns:
             Fused search results
         """
-        # TODO: Implement BM25 keyword search
-        # For now, fall back to vector search
-        logger.warning("Hybrid search not yet implemented, using vector search")
-        return self._vector_search(query, top_k, min_score, filters)
+        doc_id = filters.get("doc_id") if filters else None
+
+        results = self.hybrid_search.search(
+            query=query,
+            top_k=top_k,
+            min_score=min_score,
+            doc_id=doc_id,
+        )
+
+        logger.debug(f"Hybrid search returned {len(results)} results")
+        return results
 
     def _rerank_results(
         self,
@@ -150,7 +160,11 @@ class RetrieverAgent:
         results: List[Dict[str, Any]]
     ) -> List[Dict[str, Any]]:
         """
-        Re-rank results using additional signals.
+        Re-rank results using section-clustering boost.
+
+        Multiple hits from the same section suggest higher relevance for that
+        section. Each result gets a bonus proportional to how many other hits
+        share its section_path.
 
         Args:
             query: Original query
@@ -159,10 +173,34 @@ class RetrieverAgent:
         Returns:
             Re-ranked results
         """
-        # TODO: Implement cross-encoder re-ranking or LLM-based re-ranking
-        # For now, return results as-is (already sorted by vector similarity)
-        logger.debug("Re-ranking not yet implemented, keeping original order")
-        return results
+        if not results:
+            return results
+
+        # Count hits per section_path
+        section_counts = Counter(
+            r.get("section_path") or "unknown" for r in results
+        )
+
+        # Apply clustering boost: multiply score by log-scaled section count
+        boosted = []
+        for r in results:
+            section = r.get("section_path") or "unknown"
+            count = section_counts[section]
+            # Boost: 1.0 for single hit, up to ~1.3 for 3+ hits in same section
+            boost = 1.0 + 0.15 * (count - 1) if count > 1 else 1.0
+            new_score = r["score"] * boost
+            boosted.append((new_score, r))
+
+        boosted.sort(key=lambda x: x[0], reverse=True)
+
+        reranked = []
+        for score, r in boosted:
+            entry = dict(r)
+            entry["score"] = score
+            reranked.append(entry)
+
+        logger.debug(f"Re-ranked {len(reranked)} results with section clustering")
+        return reranked
 
     def _assemble_context(
         self,

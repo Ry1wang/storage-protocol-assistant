@@ -24,8 +24,9 @@ Build a high-precision Q&A system for storage protocol specifications (eMMC, UFS
 - [x] Docker configuration
 - [x] Database clients (Qdrant, SQLite)
 - [x] Basic Streamlit UI
-- [ ] Document ingestion pipeline
-- [ ] Three-agent pipeline (Router, Retriever, Generator)
+- [x] Document ingestion pipeline
+- [x] Three-agent pipeline (Router, Retriever, Generator)
+- [x] Hybrid retrieval (vector + BM25 keyword search with RRF fusion)
 - [ ] Citation tracking system
 
 ### Phase 2: Enhancements (Week 2-3)
@@ -45,18 +46,18 @@ Build a high-precision Q&A system for storage protocol specifications (eMMC, UFS
 ```
 storage-protocol-assistant/
 ├── src/
-│   ├── agents/              # Agentic components (TO BE IMPLEMENTED)
+│   ├── agents/              # Agentic components (✅ COMPLETE)
 │   │   ├── query_router.py      # Query classification and routing
 │   │   ├── retriever.py         # Hybrid retrieval agent
 │   │   └── answer_generator.py  # Citation-backed answer generation
-│   ├── ingestion/           # Document processing (TO BE IMPLEMENTED)
+│   ├── ingestion/           # Document processing (✅ COMPLETE)
 │   │   ├── pdf_parser.py        # PDF parsing with Unstructured
 │   │   ├── chunker.py           # Semantic chunking
 │   │   └── ingest_spec.py       # Main ingestion script
-│   ├── retrieval/           # Search components (TO BE IMPLEMENTED)
-│   │   ├── vector_search.py     # Qdrant vector search
-│   │   ├── keyword_search.py    # BM25 keyword search
-│   │   └── hybrid_search.py     # Hybrid retrieval pipeline
+│   ├── retrieval/           # Search components (✅ COMPLETE)
+│   │   ├── vector_search.py     # Qdrant vector search with filtering
+│   │   ├── keyword_search.py    # BM25 keyword search (rank_bm25)
+│   │   └── hybrid_search.py     # RRF hybrid retrieval pipeline
 │   ├── models/              # Data models (✅ COMPLETE)
 │   │   └── schemas.py
 │   ├── utils/               # Utilities (✅ COMPLETE)
@@ -132,18 +133,18 @@ pytest tests/ --cov=src --cov-report=html
    - ✅ Embedding generation and storage
    - ✅ CLI script for ingesting specs
 
-2. **Implement Retrieval Components** (`src/retrieval/`) - **NEXT**
-   - Vector search wrapper for Qdrant (basic version exists, enhance with filters)
-   - BM25 keyword search implementation
-   - Hybrid search combining both approaches
-   - Reranking and score fusion
+2. ✅ **~~Implement Retrieval Components~~** (`src/retrieval/`) - **COMPLETE**
+   - ✅ Vector search wrapper with metadata filtering
+   - ✅ BM25 keyword search using rank_bm25
+   - ✅ Hybrid search with Reciprocal Rank Fusion (RRF)
+   - ✅ Section-clustering reranking in RetrieverAgent
 
-3. **Implement Agent Pipeline** (`src/agents/`)
-   - Query Router Agent (classify and route queries)
-   - Retriever Agent (orchestrate hybrid search)
-   - Answer Generator Agent (create citation-backed answers)
+3. ✅ **~~Implement Agent Pipeline~~** (`src/agents/`) - **COMPLETE**
+   - ✅ Query Router Agent (classify and route queries)
+   - ✅ Retriever Agent (orchestrate hybrid search)
+   - ✅ Answer Generator Agent (create citation-backed answers)
 
-4. **Integrate with Streamlit UI**
+4. **Integrate with Streamlit UI** - **NEXT**
    - Connect agents to `app.py`
    - Display agent reasoning steps
    - Show citations with page numbers
@@ -253,19 +254,22 @@ Key settings in `.env`:
 - **Semantic chunking** with metadata preservation
 - **CLI interface** for document ingestion
 - **Makefile commands** for easy ingestion
-- **Unit tests** for ingestion components
+- **Retrieval components** (vector_search.py, keyword_search.py, hybrid_search.py)
+- **BM25 keyword search** with rank_bm25 library
+- **Hybrid search** with Reciprocal Rank Fusion (RRF)
+- **Section-clustering reranking** in RetrieverAgent
+- **Three-agent pipeline** (QueryRouter, RetrieverAgent, AnswerGenerator)
+- **Unit tests** for ingestion and retrieval components
 - **Documentation** and examples
 
 🚧 **In Progress**:
 - None (ready for next phase)
 
 ❌ **Not Started**:
-- Retrieval components (vector + keyword search)
-- Agent implementations (Router, Retriever, Generator)
 - Full UI integration
 - Production testing suite
 
 ---
 
-**Last Updated**: 2026-02-14
-**Phase**: MVP - Ingestion Pipeline Complete ✅
+**Last Updated**: 2026-02-15
+**Phase**: MVP - Retrieval & Agent Pipeline Complete ✅

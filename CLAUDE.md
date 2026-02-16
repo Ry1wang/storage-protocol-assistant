@@ -1,275 +1,115 @@
 # Storage Protocol Assistant - AI Development Guide
 
-This document provides context for AI assistants (Claude, etc.) working on this project.
+This document provides context for AI assistants working on this project. For setup, usage, and deployment details, see [README.md](README.md).
 
 ## Project Overview
 
-**Type:** Agentic RAG System for Storage Protocol Specifications
-**Status:** Initial Setup Complete (MVP Phase)
-**Architecture:** Streamlit + Qdrant + SQLite + DeepSeek
-**Deployment:** Docker Compose
+Agentic RAG system for storage protocol specifications (eMMC, UFS, etc.). Zero-tolerance for hallucinations, citation-backed answers, hybrid retrieval.
 
-## Project Goals
-
-Build a high-precision Q&A system for storage protocol specifications (eMMC, UFS, etc.) with:
-- Zero-tolerance for hallucinations
-- Complete answer traceability with citations
-- Multi-agent architecture for query processing
-- Hybrid retrieval (vector + keyword search)
-
-## Development Phases
-
-### Phase 1: MVP (Week 1) - **CURRENT PHASE**
-- [x] Initial project setup
-- [x] Docker configuration
-- [x] Database clients (Qdrant, SQLite)
-- [x] Basic Streamlit UI
-- [x] Document ingestion pipeline
-- [x] Three-agent pipeline (Router, Retriever, Generator)
-- [x] Hybrid retrieval (vector + BM25 keyword search with RRF fusion)
-- [ ] Citation tracking system
-
-### Phase 2: Enhancements (Week 2-3)
-- [ ] React UI migration
-- [ ] LangGraph orchestration
-- [ ] Advanced PDF parsing (hybrid approach)
-- [ ] Multi-document comparison
-
-### Phase 3: Production (Week 4+)
-- [ ] PostgreSQL migration
-- [ ] Monitoring and logging
-- [ ] Performance optimization
-- [ ] User feedback system
-
-## Project Structure
-
-```
-storage-protocol-assistant/
-├── src/
-│   ├── agents/              # Agentic components (✅ COMPLETE)
-│   │   ├── query_router.py      # Query classification and routing
-│   │   ├── retriever.py         # Hybrid retrieval agent
-│   │   └── answer_generator.py  # Citation-backed answer generation
-│   ├── ingestion/           # Document processing (✅ COMPLETE)
-│   │   ├── pdf_parser.py        # PDF parsing with Unstructured
-│   │   ├── chunker.py           # Semantic chunking
-│   │   └── ingest_spec.py       # Main ingestion script
-│   ├── retrieval/           # Search components (✅ COMPLETE)
-│   │   ├── vector_search.py     # Qdrant vector search with filtering
-│   │   ├── keyword_search.py    # BM25 keyword search (rank_bm25)
-│   │   └── hybrid_search.py     # RRF hybrid retrieval pipeline
-│   ├── models/              # Data models (✅ COMPLETE)
-│   │   └── schemas.py
-│   ├── utils/               # Utilities (✅ COMPLETE)
-│   │   ├── config.py
-│   │   └── logger.py
-│   └── database/            # Database clients (✅ COMPLETE)
-│       ├── qdrant_client.py
-│       └── sqlite_client.py
-├── app.py                   # Main Streamlit app (✅ SKELETON)
-├── docker-compose.yml       # Docker setup (✅ COMPLETE)
-├── Dockerfile               # Application container (✅ COMPLETE)
-└── requirements.txt         # Python dependencies (✅ COMPLETE)
-```
-
-## Technology Stack
-
-### Core
-- **Python 3.11+**: Main language
-- **Streamlit**: MVP UI framework
-- **DeepSeek API**: LLM for reasoning (deepseek-reasoner) and routing (deepseek-chat)
-
-### Data Storage
-- **Qdrant**: Vector database for embeddings
-- **SQLite**: Metadata and audit logs (MVP)
-- **Embeddings**: sentence-transformers/all-MiniLM-L6-v2
-
-### Document Processing
-- **Unstructured.io**: PDF parsing (basic mode for MVP)
-- **Custom chunking**: Semantic chunking with structure preservation
-
-## Key Design Principles
-
-1. **Accuracy First**: Multi-stage verification and citation tracking
-2. **No Hallucinations**: Every claim must have a source citation
-3. **Transparency**: Full provenance tracking from query to answer
-4. **Docker-Native**: Containerized for easy deployment
-5. **Iterative Development**: Start simple (MVP), enhance based on feedback
+**Stack:** Python 3.11 / Streamlit / Qdrant / SQLite / DeepSeek API / Docker Compose
 
 ## Development Guidelines
 
-### For AI Assistants
+- **MVP-first**: Simple, working solutions before optimization
+- **Citation tracking**: Every answer must include source references
+- **Structured logging**: Use `src/utils/logger.py`
+- **Architecture reference**: See `docs/PRD_V2.md`
+- **Code style**: `black` formatting, `flake8` linting, Google-style docstrings, type hints
 
-When working on this project:
+## Key Architecture
 
-1. **Follow the MVP approach**: Implement simple, working solutions first
-2. **Maintain citation tracking**: Every answer must include source references
-3. **Use structured logging**: Use the logger from `src/utils/logger.py`
-4. **Follow the architecture**: See `docs/PRD_V2.md` for detailed architecture
-5. **Test incrementally**: Write tests as you implement features
+### Three-Agent Pipeline (`src/agents/`)
+1. **QueryRouter** (`query_router.py`) — Classifies queries into 6 types (factual, definition, comparison, specification, procedural, troubleshooting), selects retrieval strategy (vector/hybrid), sets search params (top_k, min_score)
+2. **RetrieverAgent** (`retriever.py`) — Orchestrates vector/hybrid search, section-clustering rerank, context assembly with `[N]` numbered references
+3. **AnswerGenerator** (`answer_generator.py`) — Produces citation-backed answers, extracts `[N]` citation references, calculates confidence scores
 
-### Code Style
+### Retrieval (`src/retrieval/`)
+- **Vector search**: Qdrant with sentence-transformers/all-MiniLM-L6-v2 (384-dim)
+- **Keyword search**: BM25 via rank_bm25
+- **Hybrid search**: Reciprocal Rank Fusion (RRF) merging both sources
 
-- **Formatting**: Use `black` for code formatting
-- **Linting**: Follow `flake8` rules
-- **Type hints**: Use type annotations where appropriate
-- **Docstrings**: Use Google-style docstrings
+### Ingestion (`src/ingestion/`)
+- **PDF parsing**: Unstructured.io (basic mode)
+- **Chunking**: Section-aware chunker with configurable boundary levels, min/max chunk sizes
+- **Chunker factory**: Selects between TOC-based and section-aware chunkers
 
-### Testing
+### Data Layer
+- **Qdrant** (`src/database/qdrant_client.py`) — Vector storage, search, scroll pagination, doc_id filtering
+- **SQLite** (`src/database/sqlite_client.py`) — Document metadata, audit logs
+- **Schemas** (`src/models/schemas.py`) — DocumentMetadata, DocumentChunk, ChunkMetadata
 
-```bash
-# Run tests
-make test
+## Completed Development
 
-# Run with coverage
-pytest tests/ --cov=src --cov-report=html
-```
+### Phase 1: MVP (Complete)
+- [x] Docker setup and containerization
+- [x] Database clients (Qdrant + SQLite)
+- [x] PDF ingestion pipeline with section-aware chunking
+- [x] CLI for document ingestion (`python -m src.ingestion.ingest_spec`)
+- [x] Vector search with metadata filtering
+- [x] BM25 keyword search with rank_bm25
+- [x] Hybrid search with RRF fusion
+- [x] Three-agent pipeline (Router, Retriever, Generator)
+- [x] Streamlit UI with document upload, strategy selector, citation display
+- [x] eMMC 5.1 spec ingested (821 chunks, 95.2% section title accuracy)
 
-## Next Steps (Priority Order)
+### Testing Suite (Complete)
+126 tests, all passing, fully mocked (no Docker/Qdrant/DeepSeek needed for CI).
 
-1. ✅ **~~Implement PDF Ingestion Pipeline~~** (`src/ingestion/`) - **COMPLETE**
-   - ✅ PDF parser using Unstructured.io
-   - ✅ Semantic chunking with metadata preservation
-   - ✅ Embedding generation and storage
-   - ✅ CLI script for ingesting specs
-
-2. ✅ **~~Implement Retrieval Components~~** (`src/retrieval/`) - **COMPLETE**
-   - ✅ Vector search wrapper with metadata filtering
-   - ✅ BM25 keyword search using rank_bm25
-   - ✅ Hybrid search with Reciprocal Rank Fusion (RRF)
-   - ✅ Section-clustering reranking in RetrieverAgent
-
-3. ✅ **~~Implement Agent Pipeline~~** (`src/agents/`) - **COMPLETE**
-   - ✅ Query Router Agent (classify and route queries)
-   - ✅ Retriever Agent (orchestrate hybrid search)
-   - ✅ Answer Generator Agent (create citation-backed answers)
-
-4. ✅ **~~Integrate with Streamlit UI~~** - **COMPLETE**
-   - ✅ Connect agents to `app.py`
-   - ✅ Display agent reasoning steps (query type, strategy, latency breakdown)
-   - ✅ Show citations with page numbers and dynamic source names
-   - ✅ Add document upload interface with protocol/version input
-   - ✅ Retrieval strategy selector (auto/vector/hybrid)
-
-5. **Testing & Validation**
-   - Create test query dataset
-   - Measure citation accuracy
-   - Test with sample protocol specs
-   - End-to-end integration tests
-
-## Common Tasks
-
-### Start Development Environment
+| File | Category | Tests | Covers |
+|------|----------|-------|--------|
+| `test_config.py` | Unit | 2 | Settings validation |
+| `test_ingestion.py` | Unit | 11 | PDF parser, chunker (requires `unstructured`) |
+| `test_retrieval.py` | Unit | 2 | BM25, RRF, reranking |
+| `test_blackbox_ingestion.py` | Black-box | 10 | Document ingest/delete/list lifecycle |
+| `test_blackbox_retrieval.py` | Black-box | 12 | Search interface, strategy routing, context assembly |
+| `test_blackbox_pipeline.py` | Black-box | 9 | End-to-end RAG pipeline orchestration |
+| `test_blackbox_ui.py` | Black-box | 8 | Streamlit `process_query()` logic |
+| `test_whitebox_query_router.py` | White-box | 12 | Strategy mapping, search params, route integration |
+| `test_whitebox_answer_generator.py` | White-box | 15 | Citation extraction, confidence calc, instructions |
+| `test_whitebox_chunker.py` | White-box | 10 | Section boundary detection, chunking behavior |
+| `test_whitebox_qdrant.py` | White-box | 10 | Collection management, CRUD, pagination, filtering |
+| `test_rag_accuracy.py` | Accuracy | 24 | All 6 query types + cross-cutting accuracy checks |
+| `conftest.py` | Fixtures | — | 21 sample chunks, mock stores, shared helpers |
 
 ```bash
-# Copy environment template
-cp .env.example .env
-# Edit .env and add DEEPSEEK_API_KEY
+# Run all tests (pytest.ini has --cov flags; override if pytest-cov not installed)
+python -m pytest tests/ -v --override-ini="addopts=-v --strict-markers --tb=short"
 
-# Start services
-docker-compose up -d
-
-# View logs
-docker-compose logs -f app
+# By category
+python -m pytest tests/test_blackbox_*.py -v --override-ini="addopts="
+python -m pytest tests/test_whitebox_*.py -v --override-ini="addopts="
+python -m pytest tests/test_rag_accuracy.py -v --override-ini="addopts="
 ```
 
-### Ingest a Document
+## Remaining Requirements
 
-```bash
-# Using Makefile (recommended)
-make ingest FILE=/app/specs/emmc_5.1.pdf PROTOCOL=eMMC VERSION=5.1
+### Phase 1 Remaining
+- [ ] Citation tracking system (end-to-end provenance from query to source page)
 
-# Or using CLI directly
-docker-compose exec app python -m src.ingestion.ingest_spec ingest \
-  --file /app/specs/emmc_5.1.pdf \
-  --protocol eMMC \
-  --version 5.1 \
-  --title "eMMC Specification v5.1" \
-  --strategy fast
+### Phase 2: Enhancements
+- [ ] React UI migration (replace Streamlit)
+- [ ] LangGraph orchestration (replace manual agent wiring)
+- [ ] Advanced PDF parsing (hybrid approach with Camelot for tables)
+- [ ] Multi-document comparison (cross-protocol queries)
+- [ ] LLM-based re-ranking
+- [ ] Query expansion
+- [ ] Better embedding model (mpnet or bge-large)
 
-# List all documents
-make list
-```
+### Phase 3: Production
+- [ ] PostgreSQL migration (replace SQLite)
+- [ ] Monitoring and analytics dashboard
+- [ ] Performance optimization (caching, batching)
+- [ ] User feedback system
+- [ ] Diagram analysis (DeepSeek-VL2)
+- [ ] Scalability improvements
 
-### Access Services
+## Testing Notes
 
-- **Streamlit UI**: http://localhost:8501
-- **Qdrant Dashboard**: http://localhost:6333/dashboard
-
-## Configuration
-
-Key settings in `.env`:
-
-- `DEEPSEEK_API_KEY`: Your DeepSeek API key (required)
-- `QDRANT_URL`: Qdrant connection URL (default: http://qdrant:6333)
-- `TOP_K`: Number of chunks to retrieve (default: 10)
-- `CHUNK_SIZE`: Size of text chunks in tokens (default: 500)
-- `CHUNK_OVERLAP`: Overlap between chunks (default: 50)
-
-## Debugging Tips
-
-1. **Check service health**:
-   ```bash
-   docker-compose ps
-   ```
-
-2. **View application logs**:
-   ```bash
-   docker-compose logs -f app
-   ```
-
-3. **Check Qdrant collections**:
-   - Visit http://localhost:6333/dashboard
-   - Or use: `docker-compose exec app python -c "from src.database.qdrant_client import QdrantVectorStore; print(QdrantVectorStore().client.get_collections())"`
-
-4. **Check SQLite database**:
-   ```bash
-   sqlite3 data/metadata.db "SELECT * FROM documents;"
-   ```
-
-## Resources
-
-- **PRD**: See `docs/PRD_V2.md` for complete architecture
-- **API Docs**: DeepSeek API - https://platform.deepseek.com/api-docs
-- **Qdrant Docs**: https://qdrant.tech/documentation/
-- **Streamlit Docs**: https://docs.streamlit.io/
-
-## Notes for Future Development
-
-- **Vector DB**: Qdrant chosen for simplicity and hybrid search support
-- **LLM**: DeepSeek-R1 for reasoning, DeepSeek-V3 for fast routing
-- **Migration Path**: Plan to migrate to React UI and LangGraph post-MVP
-- **Table Extraction**: Will add Camelot for complex tables in production
-- **Diagram Analysis**: Will add DeepSeek-VL2 for diagram understanding later
-
-## Current Status Summary
-
-✅ **Complete**:
-- Project structure and configuration
-- Docker setup (compose + Dockerfile)
-- Database clients (Qdrant + SQLite)
-- Data models and schemas
-- Logging and configuration utilities
-- Basic Streamlit UI shell
-- **PDF ingestion pipeline** (pdf_parser.py, chunker.py, ingest_spec.py)
-- **Semantic chunking** with metadata preservation
-- **CLI interface** for document ingestion
-- **Makefile commands** for easy ingestion
-- **Retrieval components** (vector_search.py, keyword_search.py, hybrid_search.py)
-- **BM25 keyword search** with rank_bm25 library
-- **Hybrid search** with Reciprocal Rank Fusion (RRF)
-- **Section-clustering reranking** in RetrieverAgent
-- **Three-agent pipeline** (QueryRouter, RetrieverAgent, AnswerGenerator)
-- **Unit tests** for ingestion and retrieval components
-- **Documentation** and examples
-
-🚧 **In Progress**:
-- None (ready for next phase)
-
-❌ **Not Started**:
-- Production testing suite
+- `test_ingestion.py` requires `unstructured` library (Docker only). The equivalent functionality is covered by `test_blackbox_ingestion.py` with mocked deps for local runs.
+- 10 warnings are expected: 1x Pydantic V2 deprecation, 9x `datetime.utcnow()` deprecation. Non-blocking.
+- All accuracy tests use mocked DeepSeek responses but exercise real routing logic (strategy selection, search param mapping).
 
 ---
 
-**Last Updated**: 2026-02-15
-**Phase**: MVP - Retrieval & Agent Pipeline Complete ✅
+**Last Updated**: 2026-02-16
+**Phase**: MVP Complete, Testing Complete
